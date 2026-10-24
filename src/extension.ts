@@ -3,6 +3,7 @@ import { TaskStore } from './store';
 import { Node, TaskTreeProvider } from './treeView';
 import { TaskForm } from './taskForm';
 import { Dashboard } from './dashboard';
+import { EditorMarkers } from '../../TaskBoardExtension/src/editorMarkers';
 import { openLink, pickStatus, setStatus, taskFromArg } from './actions';
 import { SORT_META, SortMode, Task, TaskLink, TaskType, TYPE_META } from './model';
 
@@ -231,7 +232,8 @@ export async function activate(ctx: vscode.ExtensionContext): Promise<void> {
 
   reg('refresh', () => store.reload());
 
-  ctx.subscriptions.push(store, tree, view, statusBar);
+  const markers = new EditorMarkers(store);
+  ctx.subscriptions.push(store, tree, view, statusBar, markers, vscode.languages.registerCodeLensProvider({ scheme: 'file' }, markers));
 }
 
 export function deactivate(): void {}

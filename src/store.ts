@@ -168,14 +168,23 @@ export class TaskStore implements vscode.Disposable {
 
   // ---- links ----
 
-  /** Builds a link for a file/folder inside the workspace; undefined if it's outside. */
-  async makeLink(uri: vscode.Uri, range?: { line: number; endLine?: number }): Promise<TaskLink | undefined> {
+  /** Workspace-relative path with forward slashes ('' for the root); undefined if outside the workspace. */
+  relativePath(uri: vscode.Uri): string | undefined {
     const root = this.root;
     if (!root || uri.scheme !== 'file') {
       return undefined;
     }
     const rel = path.relative(root.fsPath, uri.fsPath);
     if (rel.startsWith('..') || path.isAbsolute(rel)) {
+      return undefined;
+    }
+    return rel.split(path.sep).join('/');
+  }
+
+  /** Builds a link for a file/folder inside the workspace; undefined if it's outside. */
+  async makeLink(uri: vscode.Uri, range?: { line: number; endLine?: number }): Promise<TaskLink | undefined> {
+    const relative = this.relativePath(uri);
+    if (relative === undefined) {
       return undefined;
     }
     let kind: TaskLink['kind'] = 'file';
@@ -187,7 +196,7 @@ export class TaskStore implements vscode.Disposable {
     } catch {
       // keep 'file'
     }
-    const link: TaskLink = { path: rel ? rel.split(path.sep).join('/') : '.', kind };
+    const link: TaskLink = { path: relative || '.', kind };
     if (kind === 'file' && range) {
       link.line = range.line;
       if (range.endLine && range.endLine !== range.line) {

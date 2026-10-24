@@ -2,23 +2,42 @@
   "name": "task-board",
   "displayName": "Task Board",
   "description": "Lightweight task manager inside VS Code: types, statuses, links to files and folders, dashboard. Tasks live in .tasks/ and sync via git.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "zerox",
   "license": "MIT",
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Other"],
-  "keywords": ["todo", "tasks", "kanban", "task manager", "fixme"],
-  "activationEvents": ["onStartupFinished"],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "todo",
+    "tasks",
+    "kanban",
+    "task manager",
+    "fixme"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "viewsContainers": {
       "activitybar": [
-        { "id": "taskBoard", "title": "Task Board", "icon": "media/icon.svg" }
+        {
+          "id": "taskBoard",
+          "title": "Task Board",
+          "icon": "media/icon.svg"
+        }
       ]
     },
     "views": {
       "taskBoard": [
-        { "id": "taskBoard.tasks", "name": "Tasks" }
+        {
+          "id": "taskBoard.tasks",
+          "name": "Tasks"
+        }
       ]
     },
     "viewsWelcome": [
@@ -34,66 +53,268 @@
       }
     ],
     "commands": [
-      { "command": "taskBoard.create", "title": "New Task", "category": "Task Board", "icon": "$(add)" },
-      { "command": "taskBoard.createFromSelection", "title": "Create Task from Selection", "category": "Task Board" },
-      { "command": "taskBoard.linkSelection", "title": "Link Selection to Task", "category": "Task Board" },
-      { "command": "taskBoard.linkToTask", "title": "Link to Task...", "category": "Task Board" },
-      { "command": "taskBoard.openDashboard", "title": "Open Dashboard", "category": "Task Board", "icon": "$(layout)" },
-      { "command": "taskBoard.edit", "title": "Edit Task", "category": "Task Board", "icon": "$(edit)" },
-      { "command": "taskBoard.start", "title": "Start Task", "category": "Task Board", "icon": "$(play)" },
-      { "command": "taskBoard.complete", "title": "Mark as Done", "category": "Task Board", "icon": "$(check)" },
-      { "command": "taskBoard.reopen", "title": "Restore (Reopen)", "category": "Task Board", "icon": "$(debug-restart)" },
-      { "command": "taskBoard.move", "title": "Change Status...", "category": "Task Board" },
-      { "command": "taskBoard.delete", "title": "Delete Permanently", "category": "Task Board", "icon": "$(trash)" },
-      { "command": "taskBoard.openLink", "title": "Open Link", "category": "Task Board" },
-      { "command": "taskBoard.removeLink", "title": "Remove Link", "category": "Task Board", "icon": "$(close)" },
-      { "command": "taskBoard.showCompleted", "title": "Show Completed Tasks", "category": "Task Board", "icon": "$(eye-closed)" },
-      { "command": "taskBoard.hideCompleted", "title": "Hide Completed Tasks", "category": "Task Board", "icon": "$(eye)" },
-      { "command": "taskBoard.sort", "title": "Sort By...", "category": "Task Board", "icon": "$(list-ordered)" },
-      { "command": "taskBoard.filter", "title": "Filter by Type...", "category": "Task Board", "icon": "$(filter)" },
-      { "command": "taskBoard.refresh", "title": "Refresh", "category": "Task Board", "icon": "$(refresh)" }
+      {
+        "command": "taskBoard.create",
+        "title": "New Task",
+        "category": "Task Board",
+        "icon": "$(add)"
+      },
+      {
+        "command": "taskBoard.createFromSelection",
+        "title": "Create Task from Selection",
+        "category": "Task Board"
+      },
+      {
+        "command": "taskBoard.linkSelection",
+        "title": "Link Selection to Task",
+        "category": "Task Board"
+      },
+      {
+        "command": "taskBoard.linkToTask",
+        "title": "Link to Task...",
+        "category": "Task Board"
+      },
+      {
+        "command": "taskBoard.openDashboard",
+        "title": "Open Dashboard",
+        "category": "Task Board",
+        "icon": "$(layout)"
+      },
+      {
+        "command": "taskBoard.edit",
+        "title": "Edit Task",
+        "category": "Task Board",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "taskBoard.start",
+        "title": "Start Task",
+        "category": "Task Board",
+        "icon": "$(play)"
+      },
+      {
+        "command": "taskBoard.complete",
+        "title": "Mark as Done",
+        "category": "Task Board",
+        "icon": "$(check)"
+      },
+      {
+        "command": "taskBoard.reopen",
+        "title": "Restore (Reopen)",
+        "category": "Task Board",
+        "icon": "$(debug-restart)"
+      },
+      {
+        "command": "taskBoard.move",
+        "title": "Change Status...",
+        "category": "Task Board"
+      },
+      {
+        "command": "taskBoard.delete",
+        "title": "Delete Permanently",
+        "category": "Task Board",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "taskBoard.openLink",
+        "title": "Open Link",
+        "category": "Task Board"
+      },
+      {
+        "command": "taskBoard.removeLink",
+        "title": "Remove Link",
+        "category": "Task Board",
+        "icon": "$(close)"
+      },
+      {
+        "command": "taskBoard.showCompleted",
+        "title": "Show Completed Tasks",
+        "category": "Task Board",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "taskBoard.hideCompleted",
+        "title": "Hide Completed Tasks",
+        "category": "Task Board",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "taskBoard.sort",
+        "title": "Sort By...",
+        "category": "Task Board",
+        "icon": "$(list-ordered)"
+      },
+      {
+        "command": "taskBoard.filter",
+        "title": "Filter by Type...",
+        "category": "Task Board",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "taskBoard.refresh",
+        "title": "Refresh",
+        "category": "Task Board",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "taskBoard.toggleLens",
+        "title": "Expand/Collapse Task Marker",
+        "category": "Task Board"
+      }
     ],
     "menus": {
       "view/title": [
-        { "command": "taskBoard.create", "when": "view == taskBoard.tasks", "group": "navigation@1" },
-        { "command": "taskBoard.openDashboard", "when": "view == taskBoard.tasks", "group": "navigation@2" },
-        { "command": "taskBoard.showCompleted", "when": "view == taskBoard.tasks && !taskBoard.showDone", "group": "navigation@3" },
-        { "command": "taskBoard.hideCompleted", "when": "view == taskBoard.tasks && taskBoard.showDone", "group": "navigation@3" },
-        { "command": "taskBoard.sort", "when": "view == taskBoard.tasks", "group": "navigation@4" },
-        { "command": "taskBoard.filter", "when": "view == taskBoard.tasks", "group": "navigation@5" },
-        { "command": "taskBoard.refresh", "when": "view == taskBoard.tasks", "group": "1_misc" }
+        {
+          "command": "taskBoard.create",
+          "when": "view == taskBoard.tasks",
+          "group": "navigation@1"
+        },
+        {
+          "command": "taskBoard.openDashboard",
+          "when": "view == taskBoard.tasks",
+          "group": "navigation@2"
+        },
+        {
+          "command": "taskBoard.showCompleted",
+          "when": "view == taskBoard.tasks && !taskBoard.showDone",
+          "group": "navigation@3"
+        },
+        {
+          "command": "taskBoard.hideCompleted",
+          "when": "view == taskBoard.tasks && taskBoard.showDone",
+          "group": "navigation@3"
+        },
+        {
+          "command": "taskBoard.sort",
+          "when": "view == taskBoard.tasks",
+          "group": "navigation@4"
+        },
+        {
+          "command": "taskBoard.filter",
+          "when": "view == taskBoard.tasks",
+          "group": "navigation@5"
+        },
+        {
+          "command": "taskBoard.refresh",
+          "when": "view == taskBoard.tasks",
+          "group": "1_misc"
+        }
       ],
       "view/item/inline": [
-        { "command": "taskBoard.start", "when": "view == taskBoard.tasks && viewItem == task-todo", "group": "inline@1" },
-        { "command": "taskBoard.complete", "when": "view == taskBoard.tasks && viewItem =~ /^task-(todo|in-progress)$/", "group": "inline@2" },
-        { "command": "taskBoard.reopen", "when": "view == taskBoard.tasks && viewItem == task-done", "group": "inline@1" },
-        { "command": "taskBoard.removeLink", "when": "view == taskBoard.tasks && viewItem == link", "group": "inline@1" }
+        {
+          "command": "taskBoard.start",
+          "when": "view == taskBoard.tasks && viewItem == task-todo",
+          "group": "inline@1"
+        },
+        {
+          "command": "taskBoard.complete",
+          "when": "view == taskBoard.tasks && viewItem =~ /^task-(todo|in-progress)$/",
+          "group": "inline@2"
+        },
+        {
+          "command": "taskBoard.reopen",
+          "when": "view == taskBoard.tasks && viewItem == task-done",
+          "group": "inline@1"
+        },
+        {
+          "command": "taskBoard.removeLink",
+          "when": "view == taskBoard.tasks && viewItem == link",
+          "group": "inline@1"
+        }
       ],
       "view/item/context": [
-        { "command": "taskBoard.edit", "when": "view == taskBoard.tasks && viewItem =~ /^task-/", "group": "1_edit@1" },
-        { "command": "taskBoard.start", "when": "view == taskBoard.tasks && viewItem == task-todo", "group": "2_status@1" },
-        { "command": "taskBoard.complete", "when": "view == taskBoard.tasks && viewItem =~ /^task-(todo|in-progress)$/", "group": "2_status@2" },
-        { "command": "taskBoard.reopen", "when": "view == taskBoard.tasks && viewItem == task-done", "group": "2_status@1" },
-        { "command": "taskBoard.move", "when": "view == taskBoard.tasks && viewItem =~ /^task-/", "group": "2_status@3" },
-        { "command": "taskBoard.delete", "when": "view == taskBoard.tasks && viewItem =~ /^task-/", "group": "9_danger" },
-        { "command": "taskBoard.removeLink", "when": "view == taskBoard.tasks && viewItem == link", "group": "1_edit" }
+        {
+          "command": "taskBoard.edit",
+          "when": "view == taskBoard.tasks && viewItem =~ /^task-/",
+          "group": "1_edit@1"
+        },
+        {
+          "command": "taskBoard.start",
+          "when": "view == taskBoard.tasks && viewItem == task-todo",
+          "group": "2_status@1"
+        },
+        {
+          "command": "taskBoard.complete",
+          "when": "view == taskBoard.tasks && viewItem =~ /^task-(todo|in-progress)$/",
+          "group": "2_status@2"
+        },
+        {
+          "command": "taskBoard.reopen",
+          "when": "view == taskBoard.tasks && viewItem == task-done",
+          "group": "2_status@1"
+        },
+        {
+          "command": "taskBoard.move",
+          "when": "view == taskBoard.tasks && viewItem =~ /^task-/",
+          "group": "2_status@3"
+        },
+        {
+          "command": "taskBoard.delete",
+          "when": "view == taskBoard.tasks && viewItem =~ /^task-/",
+          "group": "9_danger"
+        },
+        {
+          "command": "taskBoard.removeLink",
+          "when": "view == taskBoard.tasks && viewItem == link",
+          "group": "1_edit"
+        }
       ],
       "editor/context": [
-        { "command": "taskBoard.createFromSelection", "when": "editorTextFocus && workspaceFolderCount > 0", "group": "taskBoard@1" },
-        { "command": "taskBoard.linkSelection", "when": "editorTextFocus && workspaceFolderCount > 0", "group": "taskBoard@2" }
+        {
+          "command": "taskBoard.createFromSelection",
+          "when": "editorTextFocus && workspaceFolderCount > 0",
+          "group": "taskBoard@1"
+        },
+        {
+          "command": "taskBoard.linkSelection",
+          "when": "editorTextFocus && workspaceFolderCount > 0",
+          "group": "taskBoard@2"
+        }
       ],
       "explorer/context": [
-        { "command": "taskBoard.linkToTask", "when": "workspaceFolderCount > 0", "group": "taskBoard@1" }
+        {
+          "command": "taskBoard.linkToTask",
+          "when": "workspaceFolderCount > 0",
+          "group": "taskBoard@1"
+        }
       ],
       "commandPalette": [
-        { "command": "taskBoard.edit", "when": "false" },
-        { "command": "taskBoard.start", "when": "false" },
-        { "command": "taskBoard.complete", "when": "false" },
-        { "command": "taskBoard.reopen", "when": "false" },
-        { "command": "taskBoard.move", "when": "false" },
-        { "command": "taskBoard.delete", "when": "false" },
-        { "command": "taskBoard.openLink", "when": "false" },
-        { "command": "taskBoard.removeLink", "when": "false" }
+        {
+          "command": "taskBoard.edit",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.start",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.complete",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.reopen",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.move",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.delete",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.openLink",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.removeLink",
+          "when": "false"
+        },
+        {
+          "command": "taskBoard.toggleLens",
+          "when": "false"
+        }
       ]
     },
     "configuration": {
@@ -103,6 +324,11 @@
           "type": "string",
           "default": "",
           "description": "Name used as the task author. Leave empty to use `git config user.name` (falls back to the OS user name)."
+        },
+        "taskBoard.showInEditor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show linked tasks inside files: a collapsible marker above the linked line and a highlight on the linked range."
         }
       }
     }
